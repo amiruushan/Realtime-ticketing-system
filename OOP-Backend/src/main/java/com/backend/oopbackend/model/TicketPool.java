@@ -19,7 +19,7 @@ public class TicketPool {
         }
     }
 
-    public void removeTicket(){
+    public synchronized void  removeTicket(){
         if(totalTickets > 0) {
             totalTickets--;
         }else {

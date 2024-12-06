@@ -43,20 +43,20 @@ public class Customer implements Runnable {
     }
 
     @Override
-        public void run() {
-            ConfigurationService configurationService = new ConfigurationService();
+    public void run() {
+        ConfigurationService configurationService = new ConfigurationService();
 
-            try{
-                for(int i = 1; i <= ticketsPerPurchase; i++){
-                    System.out.println(
-                            customerName + " purchased ticket " + i + " out of " + ticketsPerPurchase
-                    );
-                    ticketPool.removeTicket();
+        try{
+            for(int i = 1; i <= ticketsPerPurchase; i++){
+                System.out.println(
+                        customerName + " purchased ticket " + i + " out of " + ticketsPerPurchase
+                );
+                ticketPool.removeTicket();
 
-                    Thread.sleep(configurationService.loadConfiguration().getCustomerRetrievalRate());
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());;
+                Thread.sleep(configurationService.loadConfiguration().getCustomerRetrievalRate());
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());;
         }
+    }
 }

@@ -1,11 +1,11 @@
 package com.backend.oopbackend.service;
 
-import com.backend.oopbackend.model.CurrentCustomerManager;
 import com.backend.oopbackend.model.Customer;
 import com.backend.oopbackend.model.TicketPool;
-import com.backend.oopbackend.model.Vendor;
 import com.backend.oopbackend.repository.CustomerRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -71,6 +71,4 @@ public class CustomerService {
         Thread customerThread = new Thread(customer);
         customerThread.start();
     }
-
-
 }
