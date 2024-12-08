@@ -14,33 +14,33 @@ class VendorLogin extends Component {
   handleLogin = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-
+  
     try {
-      const response = await fetch('/api/vendor/login?email=' + email + '&password=' + password, {
-        method: 'POST',
+      const response = await fetch("/api/vendor/login?email=" + email + "&password=" + password, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
-
+  
       if (response.ok) {
-        alert('Login successful!');
-        window.location.href = '/vendor-dashboard'; // Redirect after login
+        alert("Login successful!");
+        this.props.onLogin(); // Notify App.js about successful login
       } else {
-        alert('Login failed! Check your credentials.');
+        alert("Login failed! Check your credentials.");
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      alert('Login failed. Please try again.');
+      console.error("Error during login:", error);
+      alert("Login failed. Please try again.");
     }
   };
+  
 
   render() {
     console.log('Rendering VendorLogin...');
     return (
       <div className="vendor-login-container">
-      
-      <h2>Vendor Sign in</h2>
+        <h2>Vendor Sign in</h2>
 
         <form onSubmit={this.handleLogin}>
           <div>
@@ -66,15 +66,14 @@ class VendorLogin extends Component {
           <button type="submit">Login</button>
         </form>
         <h3>
-            Don't have an account?{' '}
-            <span
-                style={{ color: 'red', textDecoration: 'underline', cursor: 'pointer' }}
-                onClick= {() => window.location.href = '/vendor-signup'}
-            >
-                Sign up
-            </span>
+          Don't have an account?{' '}
+          <span
+            style={{ color: 'red', textDecoration: 'underline', cursor: 'pointer' }}
+            onClick={() => (window.location.href = '/vendor-signup')}
+          >
+            Sign up
+          </span>
         </h3>
-
       </div>
     );
   }
