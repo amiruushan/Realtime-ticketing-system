@@ -16,13 +16,13 @@ class ConfigurationForm extends Component {
     this.setState((prevState) => ({
       configuration: {
         ...prevState.configuration,
-        [name]: value === '' ? '' : Number(value), // Allow empty string for typing, but convert to number when not empty
+        [name]: value === '' ? '' : Number(value),
       },
     }));
   };
-  
 
   saveConfiguration = async () => {
+    console.log("Saving configuration...");  // Debugging step
     try {
       const response = await fetch('/api/configuration/save', {
         method: 'POST',
@@ -31,11 +31,19 @@ class ConfigurationForm extends Component {
         },
         body: JSON.stringify(this.state.configuration),
       });
-
+  
       if (response.ok) {
+        console.log("Configuration saved successfully.");  // Debugging step
         alert('Configuration saved successfully!');
+        
+        // Add this line to confirm redirection
+        console.log("Redirecting to user-type-selection...");
+        
+        // Redirect to user type selection page after saving configuration
+        window.location.href = '/user-type-selection';
       } else {
         const errorMessage = await response.text();
+        console.error("Error during save:", errorMessage);  // Debugging step
         throw new Error(errorMessage || 'Failed to save configuration');
       }
     } catch (error) {
@@ -43,6 +51,7 @@ class ConfigurationForm extends Component {
       alert('Failed to save configuration.');
     }
   };
+  
 
   loadConfiguration = async () => {
     try {
@@ -71,13 +80,14 @@ class ConfigurationForm extends Component {
     const { maxTicketCapacity, ticketReleaseRate, customerRetrievalRate, totalTickets } = this.state.configuration;
 
     return (
-      <div className='configuration-form-container'>
+      <div className="configuration-form-container">
         <h2>Configuration Form</h2>
-        <form className='configuration-form'>
+        <form className="configuration-form">
           <div>
             <label>
               Max Number of Tickets:
-              <input className='input'
+              <input
+                className="input"
                 type="number"
                 name="maxTicketCapacity"
                 value={maxTicketCapacity}
@@ -88,7 +98,8 @@ class ConfigurationForm extends Component {
           <div>
             <label>
               Total Number of Tickets:
-              <input className='input'
+              <input
+                className="input"
                 type="number"
                 name="totalTickets"
                 value={totalTickets}
@@ -99,7 +110,8 @@ class ConfigurationForm extends Component {
           <div>
             <label>
               Ticket Release Rate:
-              <input className='input'
+              <input
+                className="input"
                 type="number"
                 name="ticketReleaseRate"
                 value={ticketReleaseRate}
@@ -110,7 +122,8 @@ class ConfigurationForm extends Component {
           <div>
             <label>
               Customer Retrieval Rate:
-              <input className='input'
+              <input
+                className="input"
                 type="number"
                 name="customerRetrievalRate"
                 value={customerRetrievalRate}
@@ -118,14 +131,16 @@ class ConfigurationForm extends Component {
               />
             </label>
           </div>
-    
         </form>
-        <button className='button' onClick={this.saveConfiguration}>Save and Continue</button>
-        <button className='button' onClick={this.loadConfiguration}>Load Configuration</button>
+        <button className="button" onClick={this.saveConfiguration}>
+          Save and Continue
+        </button>
+        <button className="button" onClick={this.loadConfiguration}>
+          Load Configuration
+        </button>
       </div>
     );
   }
 }
 
-// Ensure that you export the class as a default export
 export default ConfigurationForm;
