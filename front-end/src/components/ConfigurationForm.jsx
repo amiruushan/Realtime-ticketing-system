@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ConfigurationStyle.css';
 
 class ConfigurationForm extends Component {
   state = {
@@ -70,13 +71,13 @@ class ConfigurationForm extends Component {
     const { maxTicketCapacity, ticketReleaseRate, customerRetrievalRate, totalTickets } = this.state.configuration;
 
     return (
-      <div>
-        <h2>Configuration</h2>
-        <form>
+      <div className='configuration-form-container'>
+        <h2>Configuration Form</h2>
+        <form className='configuration-form'>
           <div>
             <label>
               Max Number of Tickets:
-              <input
+              <input className='input'
                 type="number"
                 name="maxTicketCapacity"
                 value={maxTicketCapacity}
@@ -86,8 +87,19 @@ class ConfigurationForm extends Component {
           </div>
           <div>
             <label>
+              Total Number of Tickets:
+              <input className='input'
+                type="number"
+                name="totalTickets"
+                value={totalTickets}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
               Ticket Release Rate:
-              <input
+              <input className='input'
                 type="number"
                 name="ticketReleaseRate"
                 value={ticketReleaseRate}
@@ -98,7 +110,7 @@ class ConfigurationForm extends Component {
           <div>
             <label>
               Customer Retrieval Rate:
-              <input
+              <input className='input'
                 type="number"
                 name="customerRetrievalRate"
                 value={customerRetrievalRate}
@@ -106,20 +118,10 @@ class ConfigurationForm extends Component {
               />
             </label>
           </div>
-          <div>
-            <label>
-              Total Number of Tickets:
-              <input
-                type="number"
-                name="totalTickets"
-                value={totalTickets}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </div>
+    
         </form>
-        <button onClick={this.saveConfiguration}>Save Configuration</button>
-        <button onClick={this.loadConfiguration}>Load Configuration</button>
+        <button className='button' onClick={this.saveConfiguration}>Save and Continue</button>
+        <button className='button' onClick={this.loadConfiguration}>Load Configuration</button>
       </div>
     );
   }
