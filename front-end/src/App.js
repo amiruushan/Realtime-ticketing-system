@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ConfigurationForm from './components/ConfigurationForm.jsx'; // Correct the import here
+import ConfigurationForm from './/components/Configuration/ConfigurationForm'; // Correct the import here
 
 const App = () => {
   return (
