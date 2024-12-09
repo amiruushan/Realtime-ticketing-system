@@ -46,7 +46,7 @@ public class Customer implements Runnable {
     public void run() {
         ConfigurationService configurationService = new ConfigurationService();
 
-        if(ticketsPerPurchase < ticketPool.getTotalTickets()) {
+        if(ticketsPerPurchase <= ticketPool.getTotalTickets()) {
             try {
                 for (int i = 1; i <= ticketsPerPurchase; i++) {
                     System.out.println(

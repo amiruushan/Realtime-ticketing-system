@@ -1,0 +1,54 @@
+
+
+
+.customer-signup-container{
+    background-color: rgb(224, 224, 224);
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px;
+    width: 40vw;
+    
+}
+
+.cs-h2{
+    margin-top: 30px;
+}
+
+.cs-label{
+    display: block;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: -150px;
+}
+
+.email {
+    margin-left: -270px;
+}
+
+.cs-input {
+    padding: 10px;
+    width: 40%;
+}
+
+.cs-button{
+    margin: 10px;
+    font-size: 1.3rem;
+    color: white;
+    padding: 15px;
+    border-radius: 7px;
+    background-color:rgb(65, 130, 215);
+    border: none;
+    transition: 0.5s;
+    margin-top: 20px;
+}
+
+.cs-button:hover{
+    cursor: pointer;
+    background-color:rgb(215, 65, 65);
+    color: white;
+    border: none;
+}

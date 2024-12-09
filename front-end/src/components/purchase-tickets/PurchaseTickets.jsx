@@ -40,7 +40,16 @@ class PurchaseTickets extends Component {
   };
 
   handlePurchase = async () => {
-    const { ticketsPerPurchase } = this.state;
+    const { ticketsPerPurchase, totalTickets } = this.state;
+
+    // Check if the requested tickets exceed the available tickets
+    if (parseInt(ticketsPerPurchase, 10) > totalTickets) {
+      this.setState({
+        errorMessage: "Ticket pool does not have enough tickets.",
+        successMessage: "",
+      });
+      return;
+    }
 
     try {
       const response = await fetch(`/api/customer/purchase_tickets?ticketsPerPurchase=${ticketsPerPurchase}`, {
