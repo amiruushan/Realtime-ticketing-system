@@ -1,6 +1,4 @@
-html{
-    background-color:rgb(142, 174, 196);
-}
+/* 
 
 .configuration-form{
     border-radius: 30px;
@@ -54,4 +52,110 @@ label{
     width: 20vh;
     height: 4vh;
     margin: 5px;
-}
+} */
+
+/* ConfigurationStyle.css */
+
+/* Webpage background styling */
+body {
+    background-color: #ebeae0; /* Soft neutral background */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* General container styling */
+  .configuration-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: #ffffff; /* Clean white form container */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 500px;
+    margin: 50px auto;
+  }
+  
+  /* Form title styling */
+  .cf-h2 {
+    margin-top: auto;
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  .configuration-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  /* Label styling */
+  .configuration-form label {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+  
+  /* Input field styling */
+  .config-input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fdfdfd;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Button styling */
+  .config-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .config-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .config-button:active {
+    background-color: #00408b;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .configuration-form-container {
+      padding: 20px;
+    }
+  
+    .cf-h2 {
+      font-size: 20px;
+    }
+  
+    .config-button {
+      font-size: 14px;
+    }
+  }
+  

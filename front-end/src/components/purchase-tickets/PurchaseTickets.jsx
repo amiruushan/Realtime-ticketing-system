@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./PurchaseTicketsStyle.css";
+import "./PurchaseTicketStyle.css";
 
 class PurchaseTickets extends Component {
   state = {

@@ -1,31 +1,36 @@
 .user-type-selection-container {
     text-align: center;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
   }
 
-  h2 {
-    margin-top: 100px;
+  .user-h2 {
+    margin-top: 80px;
     margin-bottom: 40px;
     font: optional;
-    font-size: 30px;
+    color: tomato;
+    font-size: 50px;
   }
   
   .button-group {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
   }
   
   .user-type-button {
     padding: 100px 200px;
-    margin: 0 10px;
+    margin: 0 20px;
     font-size: 30px;
-    background-color: #007bff;
+    background-color: #00000063;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
   }
   
-  .button:hover {
+  .user-type-button:hover {
     background-color: #0056b3;
   }
   

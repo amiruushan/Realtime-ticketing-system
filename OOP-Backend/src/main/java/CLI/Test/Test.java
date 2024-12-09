@@ -34,7 +34,7 @@ public class Test {
         TicketPool sharedPool = new TicketPool(configuration.getMaxTicketCapacity(),configuration.getTotalTickets());
 
 
-            //vendor functioning
+        //vendor functioning
         while(userLoginType != 1 && userLoginType != 2) {
             System.out.println("Login or sign up...." +
                     "\n1. Login" +
@@ -50,9 +50,14 @@ public class Test {
 
                 // directing to the ticket pool to add tickets
                 VendorDAO vendorDAO = new VendorDAO();
-                vendorDAO.getVendorByEmail(email, password);
+                Vendor vendor = vendorDAO.getVendorByEmail(email, password);
 
-                loggedIn = true;
+                if (vendor != null) {
+                    loggedIn = true;
+                }else {
+                    System.out.println("Invalid email or password");
+                    break;
+                }
 
             }
             //---------signup----------------
@@ -116,7 +121,7 @@ public class Test {
             }catch (InterruptedException e){
                 System.out.println(e.getMessage());
             }
-            
+
             // CUSTOMER THREADS
             Thread c1 = new Thread(new Customer(01,"Tom",configuration.getCustomerRetrievalRate(),sharedPool));
             Thread c2 = new Thread(new Customer(02,"Jack",configuration.getCustomerRetrievalRate(),sharedPool));

@@ -1,0 +1,13 @@
+.purchase-tickets-container{
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px;
+    width: 40vw;
+}
+
+#pt-h2{
+    margin-top: 30px;
+}

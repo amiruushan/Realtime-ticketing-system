@@ -56,11 +56,11 @@ public class Vendor implements Runnable {
 
                 // stop when ticket pool full
                 if(isFull) {
-//                    System.out.println("Ticket pool is Full!");
+                    System.out.println("Ticket pool is Full!");
                     break;
                 }
 
-//                System.out.println("Vendor " + getVendorName() + " added ticket: " + ticketId);
+                System.out.println("Vendor " + getVendorName() + " added ticket: " + ticketId);
                 Thread.sleep(releaseInterval);
             }
         }catch (InterruptedException e) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './CustomerLoginStyle.css'; // Add styles specific to customer login if needed
+import './CustomerLoginStyle.css'; // Add styles specific to customer login if needed
 
 class CustomerLogin extends Component {
   state = {

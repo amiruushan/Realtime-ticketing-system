@@ -86,7 +86,7 @@ class ConfigurationForm extends Component {
             <label>
               Max Number of Tickets:
               <input
-                className="input"
+                className="config-input"
                 type="number"
                 name="maxTicketCapacity"
                 value={maxTicketCapacity}
@@ -98,7 +98,7 @@ class ConfigurationForm extends Component {
             <label>
               Total Number of Tickets:
               <input
-                className="input"
+                className="config-input"
                 type="number"
                 name="totalTickets"
                 value={totalTickets}
@@ -108,9 +108,9 @@ class ConfigurationForm extends Component {
           </div>
           <div>
             <label>
-              Ticket Release Rate:
+              Ticket Release Rate (Miliseconds):
               <input
-                className="input"
+                className="config-input"
                 type="number"
                 name="ticketReleaseRate"
                 value={ticketReleaseRate}
@@ -120,9 +120,9 @@ class ConfigurationForm extends Component {
           </div>
           <div>
             <label>
-              Customer Retrieval Rate:
+              Customer Retrieval Rate (Miliseconds):
               <input
-                className="input"
+                className="config-input"
                 type="number"
                 name="customerRetrievalRate"
                 value={customerRetrievalRate}

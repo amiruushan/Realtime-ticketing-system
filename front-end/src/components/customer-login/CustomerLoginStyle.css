@@ -1,7 +1,5 @@
 
-
-
-.customer-signup-container{
+.customer-login-container{
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     text-align: center;
@@ -12,11 +10,12 @@
     
 }
 
-.cs-h2{
+.cl-h2{
     margin-top: 30px;
 }
 
-.cs-label{
+.cl-email,
+.cl-password{
     display: block;
     margin: 10px;
     font-weight: bold;
@@ -25,16 +24,16 @@
     margin-left: -150px;
 }
 
-.email {
-    margin-left: -270px;
+.cl-email {
+    margin-left: -170px;
 }
 
-.cs-input {
+input {
     padding: 10px;
     width: 40%;
 }
 
-.cs-button{
+button{
     margin: 10px;
     font-size: 1.3rem;
     color: white;
@@ -46,7 +45,7 @@
     margin-top: 20px;
 }
 
-.cs-button:hover{
+button:hover{
     cursor: pointer;
     background-color:rgb(215, 65, 65);
     color: white;
