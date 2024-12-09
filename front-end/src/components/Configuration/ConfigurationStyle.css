@@ -1,8 +1,13 @@
+html{
+    background-color:rgb(142, 174, 196);
+}
+
 .configuration-form{
     border-radius: 30px;
     box-shadow: rgb(167, 167, 167) 1px 1px 15px 1px;
-    background-color:rgb(240, 240, 240);
-    padding: 20px;
+    background-color:rgb(224, 224, 224);
+    padding: 15px;
+    margin-top:10px;
     margin-bottom: 20px;
     height: 50vh;
     width: 80vh;
@@ -12,7 +17,11 @@
     display: inline-block;
 }
 
-.button{
+.cf-h2{
+    margin-top: 30px;
+}
+
+.config-button{
     margin: 10px;
     color: white;
     padding: 15px;
@@ -22,7 +31,7 @@
     transition: 0.5s;
 }
 
-.button:hover{
+.config-button:hover{
     cursor: pointer;
     background-color:rgb(215, 65, 65);
     color: white;

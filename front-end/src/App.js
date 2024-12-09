@@ -5,13 +5,16 @@ import UserTypeSelection from "./components/user-type/UserTypeSelection";
 import VendorLogin from "./components/vendor-login/VendorLogin";
 import VendorSignup from "./components/vendor-login/VendorSignup";
 import AddTickets from "./components/add-tickets/AddTickets";
+import CustomerLogin from "./components/customer-login/CustomerLogin";
+import PurchaseTickets from "./components/purchase-tickets/PurchaseTickets";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPath: window.location.pathname,
-      isAuthenticated: false, // Track authentication status
+      isAuthenticatedVendor: false, // Track vendor authentication
+      isAuthenticatedCustomer: false, // Track customer authentication
     };
   }
 
@@ -27,14 +30,19 @@ class App extends Component {
     this.setState({ currentPath: window.location.pathname });
   };
 
-  handleLogin = () => {
-    this.setState({ isAuthenticated: true });
+  handleLoginVendor = () => {
+    this.setState({ isAuthenticatedVendor: true });
     this.navigateTo("/add-tickets");
   };
 
+  handleLoginCustomer = () => {
+    this.setState({ isAuthenticatedCustomer: true });
+    this.navigateTo("/purchase-tickets");
+  };
+
   handleSignup = () => {
-    this.setState({ isAuthenticated: true });
-    this.navigateTo("/add-tickets");
+    this.setState({ isAuthenticatedCustomer: true });
+    this.navigateTo("/purchase-tickets");
   };
 
   navigateTo = (path) => {
@@ -43,7 +51,7 @@ class App extends Component {
   };
 
   render() {
-    const { currentPath, isAuthenticated } = this.state;
+    const { currentPath, isAuthenticatedVendor, isAuthenticatedCustomer } = this.state;
 
     return (
       <div className="App">
@@ -52,16 +60,31 @@ class App extends Component {
         {currentPath === "/user-type-selection" ? (
           <UserTypeSelection />
         ) : currentPath === "/vendor-login" ? (
-          <VendorLogin onLogin={this.handleLogin} />
+          <VendorLogin onLogin={this.handleLoginVendor} />
+        ) : currentPath === "/customer-login" ? (
+          <CustomerLogin onLogin={this.handleLoginCustomer} />
         ) : currentPath === "/vendor-signup" ? (
           <VendorSignup onSignup={this.handleSignup} />
         ) : currentPath === "/add-tickets" ? (
-          isAuthenticated ? (
+          isAuthenticatedVendor ? (
             <AddTickets />
           ) : (
             <div>
               <p style={{ color: "red" }}>You must log in or sign up first!</p>
-              <button onClick={() => this.navigateTo("/vendor-login")}>Go to Login</button>
+              <button onClick={() => this.navigateTo("/vendor-login")}>
+                Go to Vendor Login
+              </button>
+            </div>
+          )
+        ) : currentPath === "/purchase-tickets" ? (
+          isAuthenticatedCustomer ? (
+            <PurchaseTickets />
+          ) : (
+            <div>
+              <p style={{ color: "red" }}>You must log in or sign up first!</p>
+              <button onClick={() => this.navigateTo("/customer-login")}>
+                Go to Customer Login
+              </button>
             </div>
           )
         ) : (

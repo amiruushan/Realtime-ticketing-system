@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./VendorSignupStyle.css";
 
 class VendorSignup extends Component {
   state = {
@@ -54,11 +55,12 @@ class VendorSignup extends Component {
 
     return (
       <div className="vendor-signup-container">
-        <h2>Vendor Sign Up</h2>
+        <h2 className='vs-h2'>Vendor Sign Up</h2>
         <form onSubmit={this.handleSignup}>
           <div>
-            <label>Name:</label>
+            <label className='vs-label'>Name:</label>
             <input
+              className='vs-input'
               type="text"
               name="vendorName"
               value={vendorName}
@@ -67,8 +69,9 @@ class VendorSignup extends Component {
             />
           </div>
           <div>
-            <label>Email:</label>
+            <label className='vs-label'>Email:</label>
             <input
+              className='vs-input'
               type="email"
               name="vendorEmail"
               value={vendorEmail}
@@ -77,8 +80,9 @@ class VendorSignup extends Component {
             />
           </div>
           <div>
-            <label>Password:</label>
+            <label className='vs-label'>Password:</label>
             <input
+              className='vs-input'
               type="password"
               name="vendorPassword"
               value={vendorPassword}

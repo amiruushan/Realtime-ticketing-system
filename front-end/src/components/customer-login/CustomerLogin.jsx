@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './VendorLoginStyle.css';
+// import './CustomerLoginStyle.css'; // Add styles specific to customer login if needed
 
-class VendorLogin extends Component {
+class CustomerLogin extends Component {
   state = {
     email: '',
     password: '',
@@ -15,37 +15,36 @@ class VendorLogin extends Component {
   handleLogin = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-  
+
     try {
-      const response = await fetch("/api/vendor/login?email=" + email + "&password=" + password, {
-        method: "POST",
+      const response = await fetch(`/api/customer/login?email=${email}&password=${password}`, {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
-  
+
       if (response.ok) {
-        alert("Login successful!");
-        this.props.onLogin(); // Notify App.js about successful login
+        const result = await response.text(); // Assuming the backend sends text as response
+        alert(`Login successful! ${result}`);
+        this.props.onLogin(); // Notify parent component of successful login
       } else {
-        alert("Login failed! Check your credentials.");
+        alert('Login failed! Check your credentials.');
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      alert("Login failed. Please try again.");
+      console.error('Error during login:', error);
+      alert('Login failed. Please try again.');
     }
   };
-  
 
   render() {
-    console.log('Rendering VendorLogin...');
     return (
-      <div className="vendor-login-container">
-        <h2 className='vl-h2'>Vendor Sign in</h2>
+      <div className="customer-login-container">
+        <h2 className="cl-h2">Customer Sign in</h2>
 
         <form onSubmit={this.handleLogin}>
           <div>
-            <label className='vl-email'>Email:</label>
+            <label className="cl-email">Email:</label>
             <input
               type="email"
               name="email"
@@ -55,7 +54,7 @@ class VendorLogin extends Component {
             />
           </div>
           <div>
-            <label className='vl-password'>Password:</label>
+            <label className="cl-password">Password:</label>
             <input
               type="password"
               name="password"
@@ -70,7 +69,7 @@ class VendorLogin extends Component {
           Don't have an account?{' '}
           <span
             style={{ color: 'red', textDecoration: 'underline', cursor: 'pointer' }}
-            onClick={() => (window.location.href = '/vendor-signup')}
+            onClick={() => (window.location.href = '/customer-signup')} // Update with the actual signup route
           >
             Sign up
           </span>
@@ -80,4 +79,4 @@ class VendorLogin extends Component {
   }
 }
 
-export default VendorLogin;
+export default CustomerLogin;

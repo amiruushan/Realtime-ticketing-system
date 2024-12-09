@@ -46,17 +46,22 @@ public class Customer implements Runnable {
     public void run() {
         ConfigurationService configurationService = new ConfigurationService();
 
-        try{
-            for(int i = 1; i <= ticketsPerPurchase; i++){
-                System.out.println(
-                        customerName + " purchased ticket " + i + " out of " + ticketsPerPurchase
-                );
-                ticketPool.removeTicket();
+        if(ticketsPerPurchase < ticketPool.getTotalTickets()) {
+            try {
+                for (int i = 1; i <= ticketsPerPurchase; i++) {
+                    System.out.println(
+                            customerName + " purchased ticket " + i + " out of " + ticketsPerPurchase
+                    );
+                    ticketPool.removeTicket();
 
-                Thread.sleep(configurationService.loadConfiguration().getCustomerRetrievalRate());
+                    Thread.sleep(configurationService.loadConfiguration().getCustomerRetrievalRate());
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());;
+        }else{
+            System.out.println("Ticket pool does not have enough more tickets");
         }
     }
 }

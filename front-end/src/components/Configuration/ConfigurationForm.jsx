@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './ConfigurationStyle.css';
-
 class ConfigurationForm extends Component {
   state = {
     configuration: {
@@ -81,7 +80,7 @@ class ConfigurationForm extends Component {
 
     return (
       <div className="configuration-form-container">
-        <h2>Configuration Form</h2>
+        <h2 className='cf-h2'>Configuration Form</h2>
         <form className="configuration-form">
           <div>
             <label>
@@ -132,10 +131,10 @@ class ConfigurationForm extends Component {
             </label>
           </div>
         </form>
-        <button className="button" onClick={this.saveConfiguration}>
+        <button className="config-button" onClick={this.saveConfiguration}>
           Save and Continue
         </button>
-        <button className="button" onClick={this.loadConfiguration}>
+        <button className="config-button" onClick={this.loadConfiguration}>
           Load Configuration
         </button>
       </div>
