@@ -17,11 +17,10 @@ public class TicketPoolController {
     @Autowired
     private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
-    @GetMapping("/totaltickets")
+    @GetMapping("/totaltickets") //returns the no of total tickets
     public int getTotalTickets() {
         TicketPool ticketPool = ticketPoolService.getTicketPool();
         if(ticketPool != null) {
-            System.out.println("Total Tickets : " + ticketPool.getTotalTickets());
             return ticketPool.getTotalTickets();
         }else {
             return 0;

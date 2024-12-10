@@ -43,7 +43,7 @@ public class Customer implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run() { //customer logic
         ConfigurationService configurationService = new ConfigurationService();
 
         if(ticketsPerPurchase <= ticketPool.getTotalTickets()) {

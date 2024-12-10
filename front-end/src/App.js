@@ -38,7 +38,7 @@ class App extends Component {
 
   handleSignupVendor = () => {
     this.setState({ isAuthenticatedVendor: true });
-    this.navigateTo("/purchase-tickets");
+    this.navigateTo("/add-tickets");
   };
 
   handleLoginCustomer = () => {

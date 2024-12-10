@@ -19,7 +19,7 @@ public class TicketPoolService {
 
 
     @PostConstruct
-    public void initializeTicketPool()  {
+    public void initializeTicketPool()  {  // creating a ticketpool object by getting values from json file
         try {
             ticketPool =  new TicketPool(
                     configurationService.loadConfiguration().getMaxTicketCapacity(),

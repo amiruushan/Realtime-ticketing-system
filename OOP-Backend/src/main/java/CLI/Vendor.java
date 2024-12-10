@@ -28,15 +28,12 @@ public class Vendor implements Runnable {
         this.ticketPool = ticketPool;
     }
 
+    // constructor using for vendor signup
     public Vendor(String vendorName, String vendorEmail, String vendorPassword) {
         this.vendorName = vendorName;
         this.vendorEmail = vendorEmail;
         this.vendorPassword = vendorPassword;
     }
-
-//    public void setReleaseInterval(int releaseInterval) {
-//        this.releaseInterval = configuration.getTicketReleaseRate();
-//    }
 
     @Override
     public void run() {
@@ -49,9 +46,8 @@ public class Vendor implements Runnable {
                 String ticketId = "T" + getVendorId() + "_" + ticketCounter;
                 ticketCounter++;
 
-                //adding to the TP part goes here6
+                //adding ticket to the ticketpool
                 Ticket ticket = new Ticket(ticketId, vendorName);
-//                TicketPool ticketPool = new TicketPool();
                 boolean isFull = ticketPool.addTicket(ticket);
 
                 // stop when ticket pool full
