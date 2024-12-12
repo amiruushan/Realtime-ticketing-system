@@ -80,7 +80,7 @@ public class Main {
 
         }
         if (loggedIn) {
-            while (releaseTickets == 1) {
+            while (releaseTickets != 1) {
                 try {
                     System.out.println("Enter 1 to add tikcets to the Ticket Pool");
                     releaseTickets = sc.nextInt();
@@ -152,7 +152,7 @@ public class Main {
                 System.out.println(sharedPool.getTotalTicket());
             }
         } else {
-            System.out.println("Invalid details0");
+            System.out.println("Invalid details");
         }
     }
 

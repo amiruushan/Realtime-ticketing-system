@@ -21,6 +21,7 @@ public class TicketPoolController {
     public int getTotalTickets() {
         TicketPool ticketPool = ticketPoolService.getTicketPool();
         if(ticketPool != null) {
+            System.out.println(ticketPool.getTotalTickets());
             return ticketPool.getTotalTickets();
         }else {
             return 0;

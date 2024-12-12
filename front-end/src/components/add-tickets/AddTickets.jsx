@@ -7,12 +7,14 @@ class AddTickets extends Component {
     successMessage: "",
     errorMessage: "",
     totalTickets: 0, // State to hold the total number of tickets
+    maxTickets: 0, // State to hold the maximum ticket capacity
   };
 
   componentDidMount() {
     this.fetchTotalTickets();
+    this.fetchMaxTickets();
 
-    // Start polling every 5 seconds (5000ms)
+    // Start polling every 2 seconds (2000ms)
     this.pollingInterval = setInterval(this.fetchTotalTickets, 2000);
   }
 
@@ -24,7 +26,6 @@ class AddTickets extends Component {
   fetchTotalTickets = async () => {
     try {
       const response = await fetch("/api/ticketpool/totaltickets");
-
       if (response.ok) {
         const totalTickets = await response.json(); // Get the total tickets from the response
         this.setState({ totalTickets });
@@ -36,13 +37,36 @@ class AddTickets extends Component {
     }
   };
 
+  fetchMaxTickets = async () => {
+    try {
+      const response = await fetch("/api/ticketpool/maxtickets");
+      if (response.ok) {
+        const maxTickets = await response.json(); // Get the maximum ticket capacity from the response
+        this.setState({ maxTickets });
+      } else {
+        console.error("Failed to fetch maximum tickets");
+      }
+    } catch (error) {
+      console.error("Error fetching maximum tickets:", error);
+    }
+  };
+
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   handleAddTicket = async () => {
-    const { ticketPerRelease } = this.state;
+    const { ticketPerRelease, totalTickets, maxTickets } = this.state;
+
+    // Validation for exceeding maximum ticket capacity
+    if (parseInt(ticketPerRelease, 10) + totalTickets > maxTickets) {
+      this.setState({
+        errorMessage: "Exceed maximum ticket capacity.",
+        successMessage: "",
+      });
+      return;
+    }
 
     try {
       const response = await fetch(`/api/vendor/addticket?ticketPerRelease=${ticketPerRelease}`, {
@@ -75,7 +99,7 @@ class AddTickets extends Component {
   };
 
   render() {
-    const { ticketPerRelease, successMessage, errorMessage, totalTickets } = this.state;
+    const { ticketPerRelease, successMessage, errorMessage, totalTickets, maxTickets } = this.state;
 
     return (
       <div className="add-tickets-container">
@@ -95,8 +119,9 @@ class AddTickets extends Component {
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
 
-        {/* Display total number of tickets */}
+        {/* Display total number of tickets and maximum ticket capacity */}
         <p>Total Number of Tickets: {totalTickets}</p>
+        <p>Maximum Ticket Capacity: {maxTickets}</p>
       </div>
     );
   }
