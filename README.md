@@ -1,34 +1,86 @@
-# Real time Ticketing system
+# Realtime Ticketing System
 
-This project is a real-time ticketing system which allows vendors to release tickets and customers to purchase tickets concurrently, with backend synchronization and multithreading to handle concurrent operations. The system also includes a configuration module for defining key parameters as follows,
+## Overview
+The Realtime Ticketing System is a web application developed using **Spring Boot** and **React**. This platform enables vendors to release tickets for events or services, while customers can purchase tickets in real-time. The backend operations utilize multithreading and synchronization to handle concurrent transactions efficiently, ensuring data consistency and reliability.
 
-    Total Number of Tickets
-    Maximum Number of Tickets
-    Ticket Release Rate
-    Customer Retreival Rate
+## Features
+- **Vendor Dashboard**: Vendors can release tickets.
+- **Customer Portal**: Customers can make purchases.
+- **Real-time Updates**: Ensures ticket availability is updated instantly.
+- **Multithreading Support**: Handles multiple ticket purchases simultaneously.
+- **Data Synchronization**: Prevents overselling of tickets through robust backend synchronization mechanisms.
 
-Features
+## Technologies Used
+### Backend
+- Spring Boot (Java)
+- Multithreading and synchronization
+- RESTful APIs
 
-Backend (Spring Boot)
+### Frontend
+- React.js
+- CSS
 
-Vendor Management:
+### Database
+- MySQL 
 
-Signup and Login for Vendors.
+### Tools
+- IntelliJ IDEA (Backend Development)
+- Visual Studio Code (Frontend Development)
+- Postman (API testing)
 
-Ticket release functionality with multithreading.
+## Installation
+### Prerequisites
+- Java 17+
+- Node.js 16+
+- MySQL or PostgreSQL database
+- Maven (for managing dependencies)
 
-Customer Management:
+### Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/gesith/Realtime-Ticketing-System.git
+   cd realtime-ticketing-system
+   ```
+2. **Setup the backend:**
+   - Navigate to the `ticketmanagement-backend` folder.
+   - Update the `DatabaseConnection` file with your database credentials.
+   - Create a local MySQL database named `TicketingSystem`.
+   - Add the following tables:
+     - **Customer**: Columns - `name`, `email`, `password`, `is_vip`
+     - **Vendor**: Columns - `name`, `email`, `password`
+   - Build and run the Spring Boot application:
+     ```bash
+     mvn clean install
+     mvn spring-boot:run
+     ```
+3. **Setup the frontend:**
+   - Navigate to the `ticketmanaging` folder.
+   - Install dependencies:
+     ```bash
+     npm install
+     ```
+   - Start the development server:
+     ```bash
+     npm start
+     ```
+4. Access the application at `http://localhost:3000`.
 
-Signup and Login for Customers.
+## Usage
+1. **For Vendors:**
+   - Sign up or log in as a vendor.
+   - Use the dashboard to release tickets.
+2. **For Customers:**
+   - Sign up or log in as a customer.
+   - Purchase tickets in real-time.
+3. **Admin Panel:** (if applicable)
+   - Update configuration parameters.
 
-Ticket purchasing functionality with multithreading.
+## Contact
+For further inquiries or support, please contact:
+- **Name:** Gesith Bimsara
+- **Email:** gesithg@icloud.com
+- **GitHub:** [github.com/gesith](https://github.com/gesith)
 
-Configuration Management:
+---
+Thank you for using the Realtime Ticketing System!
 
-Save configuration parameters (e.g., ticket release rate, max tickets).
-
-Frontend (React.js + TypeScript)
-
-Configuration Form:
-
-GUI to input and save configuration parameters to the backend.
